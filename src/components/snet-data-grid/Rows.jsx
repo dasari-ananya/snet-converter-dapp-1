@@ -53,7 +53,12 @@ const Rows = ({
   const transactionStatus = (status) => {
     let component;
     switch (status) {
-      case conversionStatuses.PROCESSING || conversionStatuses.USER_INITIATED:
+      case conversionStatuses.PROCESSING ||
+        conversionStatuses.USER_INITIATED ||
+        conversionStatuses.CLAIM_INITIATED ||
+        conversionStatuses.WAITING_FOR_CONFIRMATION ||
+        conversionStatuses.WAITING_FOR_CLAIM ||
+        conversionStatuses.IDLE:
         component = <HourglassBottomIcon fontSize="small" color="primary" />;
         break;
 
@@ -74,7 +79,7 @@ const Rows = ({
 
   const addEllipsisInBetweenString = (str) => {
     if (str.length) {
-      return `${str.substr(0, 6)}...${str.substr(str.length - 6)}`;
+      return `${str.substr(0, 4)}...${str.substr(str.length - 4)}`;
     }
     return str;
   };
